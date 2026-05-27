@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>思辨之林：狐假虎威的歸因謬誤</title>
+  
+  <!-- 引入 Tailwind CSS 構建極致現代的暗綠森林風 UI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入 Lucide Icons 提升畫面細節質感 -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #081611;
+      background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+      font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", system-ui, sans-serif;
+    }
+
+    /* 森林夜間微光特效 */
+    .forest-glow {
+      box-shadow: 0 0 40px 5px rgba(16, 185, 129, 0.15);
+    }
+
+    /* 動物呼吸般的平靜浮動 */
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-3px) rotate(1deg); }
+    }
+    .animal-calm {
+      animation: gentleFloat 3s ease-in-out infinite;
+    }
+
+    /* 驚慌震動 */
+    @keyframes terrorShake {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      10%, 30%, 50%, 70%, 90% { transform: translate(-3px, -1px) scale(0.98); }
+      20%, 40%, 60%, 80% { transform: translate(3px, 1px) scale(1.02); }
+    }
+    .animal-scared {
+      animation: terrorShake 0.4s ease-in-out infinite;
+    }
+
+    /* 漸進動畫 */
+    .fade-in-up {
+      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-stone-200 flex flex-col items-center py-8 px-4 sm:px-8">
+
+  <div id="game-container" class="max-w-6xl w-full flex flex-col h-full fade-in-up">
+    
+    <!-- 頂部標題與核心概念標籤 -->
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end border-b border-emerald-900/40 pb-6 mb-8 gap-4">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-black flex items-center gap-3 text-emerald-400 tracking-wider">
+          <i data-lucide="shield-alert" class="w-8 h-8 sm:w-10 sm:h-10 text-amber-500"></i>
+          思辨之林：狐假虎威
+        </h1>
+        <p class="text-sm sm:text-base text-stone-400 mt-2 font-medium">
+          這不是一則譴責狡詐的寓言，而是一次關於「混淆變因、錯誤歸因與賽局偽造」的科學檢驗。
+        </p>
+      </div>
+      <div class="flex flex-col items-end gap-2 self-stretch lg:self-auto">
+        <span id="stage-badge" class="text-xs font-extrabold text-amber-400 bg-amber-950/40 border border-amber-800/60 px-4 py-2 rounded-full shadow-inner tracking-wider">
+          思辨階段：1 / 4 (相關非因果)
+        </span>
+      </div>
+    </div>
+
+    <!-- 雙欄排版佈局 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- 左欄：科學實驗變因觀測器 (5/12) -->
+      <div class="lg:col-span-5 flex flex-col bg-stone-900/80 rounded-2xl border border-emerald-900/30 p-6 shadow-2xl justify-between forest-glow min-h-[500px]">
+        <div>
+          <h3 class="text-xs font-bold text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            <i data-lucide="flask-conical" class="w-4 h-4"></i> 森林變因對照實驗儀
+          </h3>
+
+          <!-- 動態互動式 SVG 自然生態區 -->
+          <div class="relative w-full h-64 bg-slate-950 rounded-xl border border-emerald-950 overflow-hidden shadow-inner flex items-center justify-center">
+            
+            <svg id="forest-sim" class="w-full h-full" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- 深夜幽靜森林背景 -->
+              <defs>
+                <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#020806" />
+                  <stop offset="100%" stop-color="#0b1f18" />
+                </linearGradient>
+                <linearGradient id="firefly" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#059669" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#skyGrad)"/>
+              
+              <!-- 遠景樹木剪影 -->
+              <path d="M-20 200 L10 130 L40 200 Z" fill="#040e0b" opacity="0.8"/>
+              <path d="M300 200 L340 110 L380 200 Z" fill="#040e0b" opacity="0.8"/>
+              <path d="M350 200 L380 140 L410 200 Z" fill="#030b08" opacity="0.9"/>
+              
+              <!-- 近景灌木與地面 -->
+              <rect x="0" y="190" width="400" height="50" fill="#05140f"/>
+              <line x1="0" y1="190" x2="400" y2="190" stroke="#062e21" stroke-width="2"/>
+
+              <!-- 螢火蟲環境微光 -->
+              <circle cx="80" cy="90" r="15" fill="url(#firefly)"/>
+              <circle cx="320" cy="80" r="25" fill="url(#firefly)"/>
+
+              <!-- 【混淆變因 Z】：老虎 (黃黑條紋，雄壯威嚴) -->
+              <g id="svg-tiger" class="transition-all duration-1000 ease-in-out" transform="translate(130, 130)">
+                <!-- 尾巴 -->
+                <path d="M-40 25 Q-60 10 -45 0" stroke="#d97706" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <!-- 身體 -->
+                <rect x="-35" y="0" width="70" height="40" rx="15" fill="#d97706"/>
+                <!-- 腹部 -->
+                <rect x="-25" y="25" width="50" height="15" rx="5" fill="#fef3c7"/>
+                <!-- 老虎條紋 (黑色) -->
+                <path d="M-15 0 L-15 15 M0 0 L0 18 M15 0 L15 15" stroke="#1c1917" stroke-width="3" stroke-linecap="round"/>
+                <!-- 四肢 -->
+                <rect x="-30" y="30" width="8" height="35" rx="4" fill="#d97706"/>
+                <rect x="-15" y="30" width="8" height="35" rx="4" fill="#d97706"/>
+                <rect x="10" y="30" width="8" height="35" rx="4" fill="#d97706"/>
+                <rect x="23" y="30" width="8" height="35" rx="4" fill="#d97706"/>
+                <!-- 頭部 -->
+                <circle cx="35" cy="10" r="22" fill="#d97706"/>
+                <circle cx="35" cy="10" r="16" fill="#fef3c7"/>
+                <!-- 王字印記 -->
+                <path d="M30 0 L40 0 M35 -5 L35 5 M32 3 L38 3" stroke="#1c1917" stroke-width="2"/>
+                <!-- 眼睛 -->
+                <circle cx="30" cy="8" r="2" fill="#1c1917"/>
+                <circle cx="40" cy="8" r="2" fill="#1c1917"/>
+              </g>
+
+              <!-- 【獨立變因 X】：狐狸 (橘色高傲，走在前方) -->
+              <g id="svg-fox" class="transition-all duration-1000 ease-in-out" transform="translate(230, 145)">
+                <!-- 蓬鬆尾巴 -->
+                <path d="M-25 15 Q-45 35 -35 10 Z" fill="#ea580c"/>
+                <path d="M-35 10 Q-45 35 -40 25 Z" fill="#f9fafb"/>
+                <!-- 身體 -->
+                <rect x="-20" y="0" width="40" height="25" rx="8" fill="#ea580c"/>
+                <rect x="-12" y="15" width="24" height="10" rx="4" fill="#f9fafb"/>
+                <!-- 四肢 -->
+                <rect x="-15" y="20" width="5" height="22" rx="2" fill="#1c1917"/>
+                <rect x="-7" y="20" width="5" height="22" rx="2" fill="#ea580c"/>
+                <rect x="5" y="20" width="5" height="22" rx="2" fill="#1c1917"/>
+                <rect x="12" y="20" width="5" height="22" rx="2" fill="#ea580c"/>
+                <!-- 頭部 -->
+                <polygon points="15,-5 35,5 15,15" fill="#ea580c"/>
+                <polygon points="20,1 35,5 20,9" fill="#f9fafb"/>
+                <!-- 耳朵 -->
+                <polygon points="15,-5 12,-15 20,-8" fill="#ea580c"/>
+                <!-- 黑色鼻尖與眼睛 -->
+                <circle cx="34" cy="5" r="1.5" fill="#1c1917"/>
+                <circle cx="22" cy="3" r="1.5" fill="#1c1917"/>
+              </g>
+
+              <!-- 【觀測應變數 Y】：百獸代表 (野兔) -->
+              <g id="svg-prey" class="transition-all duration-1000 ease-in-out" transform="translate(340, 155)">
+                <!-- 兔耳 -->
+                <ellipse cx="-2" cy="-14" rx="3" ry="8" fill="#78716c" transform="rotate(-10)"/>
+                <ellipse cx="4" cy="-14" rx="3" ry="8" fill="#78716c" transform="rotate(10)"/>
+                <ellipse cx="-2" cy="-14" rx="1.5" ry="5" fill="#f43f5e" transform="rotate(-10)"/>
+                <!-- 兔身體 -->
+                <ellipse cx="0" cy="5" rx="14" ry="12" fill="#78716c"/>
+                <ellipse cx="-4" cy="5" rx="8" ry="10" fill="#f5f5f4"/>
+                <!-- 兔頭 -->
+                <circle cx="0" cy="-6" r="9" fill="#78716c"/>
+                <!-- 眼睛 (紅) -->
+                <circle cx="4" cy="-7" r="1.5" fill="#ef4444"/>
+                <!-- 尾巴 -->
+                <circle cx="-14" cy="8" r="4" fill="#f5f5f4"/>
+              </g>
+            </svg>
+
+            <!-- 實驗狀態標記 overlay -->
+            <div id="experiment-label" class="absolute top-3 left-3 bg-stone-900/90 border border-emerald-900/60 px-3 py-1 rounded text-[11px] font-bold text-emerald-400 tracking-wider">
+              當前狀態：共同前行 (故事對照組)
+            </div>
+          </div>
+
+          <!-- 對照組實驗控制面板 -->
+          <div class="mt-4 bg-emerald-950/20 border border-emerald-900/40 rounded-xl p-4">
+            <p class="text-xs font-bold text-emerald-400 mb-3 tracking-widest flex items-center gap-1.5">
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i> 調整單一變因進行測試：
+            </p>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="runExperiment('both')" id="btn-exp-both" class="bg-emerald-800/80 hover:bg-emerald-700 text-white font-bold py-2 px-1 text-center rounded text-xs transition-all border border-emerald-600">
+                甲：狐+虎
+              </button>
+              <button onclick="runExperiment('fox')" id="btn-exp-fox" class="bg-stone-850 hover:bg-stone-800 text-stone-400 font-bold py-2 px-1 text-center rounded text-xs transition-all border border-stone-800">
+                乙：僅狐狸
+              </button>
+              <button onclick="runExperiment('tiger')" id="btn-exp-tiger" class="bg-stone-850 hover:bg-stone-800 text-stone-400 font-bold py-2 px-1 text-center rounded text-xs transition-all border border-stone-800">
+                丙：僅老虎
+              </button>
+            </div>
+            <p id="exp-text-desc" class="text-[11px] text-stone-400 mt-3 italic leading-relaxed text-center">
+              當前觀察：老虎走在狐狸身後，百獸看見猛獸靠近，驚慌逃竄。
+            </p>
+          </div>
+        </div>
+
+        <!-- 兩造對立對話視角 -->
+        <div class="mt-6 space-y-4">
+          <!-- 老虎 bubble -->
+          <div class="flex gap-3 items-start">
+            <div class="w-9 h-9 bg-amber-600 rounded-full border-2 border-amber-500 flex items-center justify-center text-stone-950 font-black text-xs flex-shrink-0 shadow-lg">
+              虎
+            </div>
+            <div class="bg-stone-950/60 p-3 rounded-xl border border-amber-900/20 shadow-sm relative flex-grow">
+              <div class="absolute w-2.5 h-2.5 bg-stone-900 border-b border-l border-amber-900/10 rotate-45 -left-1.5 top-3"></div>
+              <p class="text-[10px] text-amber-500 font-bold mb-0.5">百獸之王（老虎）：</p>
+              <p id="speech-tiger" class="text-xs text-stone-300 leading-relaxed italic">
+                「怪哉！吾步於狐后，見百獸皆奪路而逃，無一敢直視其鋒。此狐莫非真受天帝之命，具備無上神格？」
+              </p>
+            </div>
+          </div>
+
+          <!-- 智者/玩家 bubble -->
+          <div class="flex gap-3 items-start justify-end">
+            <div class="bg-stone-950/60 p-3 rounded-xl border border-emerald-900/20 shadow-sm relative flex-grow order-1">
+              <div class="absolute w-2.5 h-2.5 bg-stone-900 border-t border-r border-emerald-900/10 rotate-45 -right-1.5 top-3"></div>
+              <p class="text-[10px] text-emerald-400 font-bold mb-0.5 text-right">思辨學官（你）：</p>
+              <p id="speech-sage" class="text-xs text-stone-300 leading-relaxed italic text-right">
+                「大王，您只看見了牠行經時百獸奔逃的『相關性』，卻忘記檢視您自己龐大身軀所帶來的『因果干擾』。」
+              </p>
+            </div>
+            <div class="w-9 h-9 bg-emerald-900 rounded-full border-2 border-emerald-600 flex items-center justify-center text-white font-black text-xs flex-shrink-0 order-2 shadow-lg">
+              法
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右欄：邏輯思辨、答題與反饋區 (7/12) -->
+      <div id="speculation-panel" class="lg:col-span-7 flex flex-col justify-between">
+        
+        <div>
+          <!-- 進度卡片區 -->
+          <div class="bg-stone-900/60 rounded-2xl p-6 border border-emerald-900/20 shadow-md mb-6">
+            <h2 id="stage-title" class="text-xl font-extrabold text-emerald-400 mb-2">
+              第一階段：相關性非因果關係
+            </h2>
+            <p id="stage-desc" class="text-sm text-stone-300 leading-relaxed">
+              老虎看見「狐狸走在前面時，百獸紛紛逃跑」的現象，於是認定「百獸畏懼的是狐狸」。從科學邏輯來看，老虎犯了什麼最經典的認知偏誤？
+            </p>
+          </div>
+
+          <!-- 答題引導 -->
+          <h3 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
+            <i data-lucide="glasses" class="w-4 h-4 text-emerald-500"></i> 請為老虎指明思維陷阱：
+          </h3>
+
+          <!-- 選項清單 -->
+          <div id="options-box" class="flex flex-col gap-3">
+            <!-- 透過 JS 動態灌入選項 -->
+          </div>
+        </div>
+
+        <!-- 判定反饋區 -->
+        <div id="feedback-area" class="hidden mt-6 p-5 rounded-xl border-2 transition-all duration-300">
+          <div class="flex items-start gap-3">
+            <div id="feedback-icon-container" class="mt-1 flex-shrink-0">
+              <!-- 動態渲染圖示 -->
+            </div>
+            <div class="flex-grow">
+              <h4 id="feedback-headline" class="font-extrabold text-lg mb-1">判定標題</h4>
+              <p id="feedback-detail" class="text-sm leading-relaxed mb-4">分析說明</p>
+              
+              <!-- 延伸學術/邏輯學理剖析 -->
+              <div id="theory-card" class="bg-slate-950/70 p-4 rounded-lg border border-emerald-950 text-xs text-stone-400 leading-relaxed">
+                <!-- 學術理論 -->
+              </div>
+            </div>
+          </div>
+
+          <button id="next-stage-btn" onclick="goToNextStage()" class="mt-6 w-full bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-md">
+            <span>前往下一思辨階段</span>
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 結算評估畫面 (預設隱藏) -->
+  <div id="ending-panel" class="max-w-3xl w-full bg-stone-900/90 rounded-2xl shadow-2xl p-8 sm:p-12 border-2 border-emerald-800/80 hidden flex-col items-center text-center my-auto fade-in-up forest-glow">
+    <div class="w-20 h-20 bg-emerald-950/50 rounded-full flex items-center justify-center mb-6 border-2 border-emerald-500 text-emerald-400 animate-pulse">
+      <i data-lucide="glasses" class="w-12 h-12"></i>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-black text-emerald-400 mb-4 tracking-wider">思維存真：勘破權威擬像</h1>
+    
+    <div class="text-left space-y-4 text-stone-300 text-sm sm:text-base leading-relaxed bg-slate-950 p-6 rounded-xl border border-emerald-950 mb-8 max-h-[400px] overflow-y-auto shadow-inner">
+      <p>
+        恭喜你完成了「狐假虎威」的邏輯學大判定！你沒有流於庸俗地僅去讚賞狐狸的「狡猾」或嘲笑老虎的「愚笨」，而是用**實驗對照法、混淆變因控制與賽局理論**，重構了這個故事的思維深度。
+      </p>
+      <div class="border-l-4 border-emerald-500 pl-4 py-1 bg-emerald-950/20">
+        <p class="font-bold text-emerald-400">【邏輯裁判官總結】</p>
+        <p class="text-xs text-stone-400 mt-1 leading-relaxed">
+          「狐假虎威」在現代社會中依然隨處可見。
+          當一個附屬品（狐狸）宣稱自己具備獨立的影響力（神格）時，它往往是借用了背後強大母體（老虎）的**隱性威懾力量**。
+          老虎之所以受騙，是因為身為「觀察者」的它，在缺乏<strong>「控制變因（A/B Test）」</strong>的直覺思維下，將兩個同時發生的相關現象錯判為因果關係。
+        </p>
+      </div>
+      <p>
+        <strong class="text-amber-500 font-bold">學會區分「與你同行而產生的假象」與「因你不在而顯露的真相」，並時刻保持「控制變因」的自省能力，是避開世俗盲從的最高智慧。</strong>
+      </p>
+    </div>
+
+    <button onclick="restartGame()" class="flex items-center justify-center gap-2 bg-emerald-800 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-bold transition-all shadow-lg transform hover:-translate-y-0.5">
+      <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+      <span>重返森林，重新檢驗</span>
+    </button>
+  </div>
+
+  <script>
+    // 遊戲關卡：從物理學、統計學、賽局理論解構狐假虎威
+    const STAGES = [
+      {
+        id: 1,
+        title: "第一階段：相關性不等於因果關係",
+        description: "老虎看到「狐狸前行時，百獸奔逃」，隨即得出「狐狸具備威嚴」的結論。在邏輯學中，老虎犯了什麼最致命的歸因錯誤？",
+        options: [
+          {
+            text: "【忽略第三變因 / 混淆變因 (Confounding Variable)】",
+            isCorrect: true,
+            feedback: "洞若觀火！這是經典的『相關非因果』錯誤。老虎（Z）與狐狸（X）共同前行，老虎忽略了自己身為掠食者的強大物理威脅（Z）才是造成百獸逃跑（Y）的真實因果。他把 X 與 Y 的表面相關，誤判為因果關係。"
+          },
+          {
+            text: "【訴諸權威謬誤 (Appeal to Authority)】",
+            isCorrect: false,
+            feedback: "判定錯誤。雖然狐狸提到了『天帝』，但老虎在這一幕主要是因為『親眼看到百獸奔逃』而陷入經驗主義歸因偏差，而非因為盲從權威。"
+          },
+          {
+            text: "【滑坡謬誤 (Slippery Slope Fallacy)】",
+            isCorrect: false,
+            feedback: "判定錯誤。滑坡謬誤是指無根據地推導出一系列極端連鎖因果。此處老虎的認知失調主要發生在單一時間切片的多維歸因偏誤上。"
+          }
+        ],
+        theory: "【相關非因果 (Correlation is not Causation)】：在統計與邏輯學中，兩個變量 A 與 B 同時發生變化，並不意味著 A 導致了 B。在本案中，真正的因果路徑是『老虎出現 ➔ 百獸奔逃』。狐狸的出現只是在時間與空間上與老虎高度重合的『共變因子』。",
+        recommendedExp: "both"
+      },
+      {
+        id: 2,
+        title: "第二階段：控制變因與科學對照",
+        description: "為了打破認知的迷思，智者建議老虎在林中設計一場科學對照組實驗。若要找出百獸奔逃的「單一因果變因」，以下哪項實驗配置最符合控制變因法？",
+        options: [
+          {
+            text: "【分別排除法】：讓狐狸與老虎單獨、在相同環境與時段走入森林，觀測百獸反應",
+            isCorrect: true,
+            feedback: "精確！這就是科學上的『單一變因控制實驗（Control Variable Method）』。只有當我們將『老虎的存在（Z）』降為零（僅狐狸前行），以及將『狐狸的存在（X）』降為零（僅老虎前行），我們才能清晰剥離並觀測 X 與 Z 對應變量 Y 的獨立淨效應。"
+          },
+          {
+            text: "【多維共存法】：讓狐狸騎在老虎背上共同走入林中，加倍威懾力度",
+            isCorrect: false,
+            feedback: "判定錯誤。這會進一步加深變因的耦合度（Multicollinearity），讓觀測數據更加混亂，根本無法分清究竟是誰產生的威能。"
+          },
+          {
+            text: "【隨機問卷法】：在百獸逃跑後，由狐狸去採訪野兔進行主觀動機調查",
+            isCorrect: false,
+            feedback: "判定錯誤。百獸在極度恐懼下無法理性填寫問卷，且狐狸作為利害關係人，其調查結果存在嚴重的『觀測者偏差』與『資訊污染』。"
+          }
+        ],
+        theory: "【控制變因法 (Control of Variables)】：在進行因果判定時，必須人為地使除自變量（是否為狐/虎）以外的所有其他潛在干擾因素（森林環境、氣味、光線）保持恆定，以此來檢驗應變量（百獸反應）的真實變化規避誤差。",
+        recommendedExp: "fox"
+      },
+      {
+        id: 3,
+        title: "第三階段：不完全資訊下的「廉價談話」",
+        description: "狐狸在面臨即將被捕食的生死邊緣，編造了「天帝命我掌百獸」的虛假信號。在賽局理論（Game Theory）中，這屬於哪種博弈策略？",
+        options: [
+          {
+            text: "【廉價談話 (Cheap Talk) 與防禦性非對稱博弈】",
+            isCorrect: true,
+            feedback: "完美剖析！狐狸在面臨絕對劣勢時，發送了發信成本極低且老虎『無法當場證偽』的虛擬神格信號（天帝之命）。由於老虎若貿然捕食可能面臨『天譴』的高昂潛在代價，在避險本能下，老虎選擇了防禦性退讓。這是一次極其成功的虛張聲勢（Bluffing）。"
+          },
+          {
+            text: "【納什均衡中的零和最優策略】",
+            isCorrect: false,
+            feedback: "判定錯誤。這並非穩定的雙方靜態平衡（納什均衡），而是狐狸在不完全資訊下，利用欺騙進行的動態機率操弄，老虎的決策尚未達到完全理性均衡。"
+          },
+          {
+            text: "【重複賽局中的合作互惠定理】",
+            isCorrect: false,
+            feedback: "判定錯誤。這是一場單次、高衝突性的生死赛局，不存在重複赛局中透過長期博弈建立的信任或報復機制。"
+          }
+        ],
+        theory: "【廉價談話 (Cheap Talk)】：指在不完全資訊賽局中，發送者傳遞不影響其實際物理支付（Payoff）的無成本信號。如果接收者（老虎）缺乏檢驗手段且高度規避極端風險，即使信號完全不可靠，也依然能引導接收者做出有利於發送者（狐狸）的次優決策。",
+        recommendedExp: "tiger"
+      },
+      {
+        id: 4,
+        title: "第四階段：觀察者效應與認知盲區",
+        description: "老虎在整個事件中，從未意識到「自己的觀察行為本身就是導致觀測現象發生的成因」。這揭示了科學哲學中的哪一個限制？",
+        options: [
+          {
+            text: "【觀察者效應 (Observer Effect)】：觀測主體的介入徹底改變了被觀測系統的初始狀態",
+            isCorrect: true,
+            feedback: "名家風範！老虎作為觀察者，其龐大的物理存在（頂級掠食者）就是森林生態系統最強烈的輸入源。他的存在徹底破壞了『觀測百獸對狐狸反應』的實驗純淨度。他無法做到『無干擾觀測』，卻誤把被干擾後的系統響應當成了自然常態。"
+          },
+          {
+            text: "【倖存者偏差 (Survivorship Bias)】",
+            isCorrect: false,
+            feedback: "判定錯誤。倖存者偏差是指只關注篩選後的樣本而忽略未篩選的遺漏數據。本案的盲點在於老虎未察覺自己是『干擾源』而非『取樣偏差』。"
+          },
+          {
+            text: "【達克效應 (Dunning-Kruger Effect)】",
+            isCorrect: false,
+            feedback: "判定錯誤。達克效應指能力欠缺者容易高估自己的能力。此處老虎是缺乏對『觀測邊界與物理干擾』的科學認知，屬於系統性觀察限制。"
+          }
+        ],
+        theory: "【科學哲學中的觀測限制】：我們所觀測到的世界，並非世界本來的樣貌，而是『世界與我們觀測儀器（或觀察者本身）相互作用』後的結果。老虎無法從其自身的觀察視角中退場，從而陷入了無法自證的認識論循環。",
+        recommendedExp: "both"
+      }
+    ];
+
+    let currentStageIndex = 0;
+    let isStageDone = false;
+
+    // 控制與操控 SVG 實驗觀測器的視覺與位置
+    function runExperiment(state) {
+      const tiger = document.getElementById('svg-tiger');
+      const fox = document.getElementById('svg-fox');
+      const prey = document.getElementById('svg-prey');
+      const label = document.getElementById('experiment-label');
+      const desc = document.getElementById('exp-text-desc');
+
+      // 重置所有按鈕樣式
+      document.getElementById('btn-exp-both').className = "bg-stone-850 hover:bg-stone-800 text-stone-400 font-bold py-2 px-1 text-center rounded text-xs transition-all border border-stone-800";
+      document.getElementById('btn-exp-fox').className = "bg-stone-850 hover:bg-stone-800 text-stone-400 font-bold py-2 px-1 text-center rounded text-xs transition-all border border-stone-800";
+      document.getElementById('btn-exp-tiger').className = "bg-stone-850 hover:bg-stone-800 text-stone-400 font-bold py-2 px-1 text-center rounded text-xs transition-all border border-stone-800";
+
+      if (state === 'both') {
+        // 老虎在後，狐狸在前，野兔驚慌逃跑
+        tiger.setAttribute('transform', 'translate(130, 130)');
+        tiger.style.opacity = '1';
+        fox.setAttribute('transform', 'translate(230, 145)');
+        fox.style.opacity = '1';
+        
+        prey.setAttribute('transform', 'translate(360, 155)');
+        prey.classList.remove('animal-calm');
+        prey.classList.add('animal-scared');
+        
+        label.textContent = "當前狀態：共同前行 (故事對照組)";
+        desc.textContent = "觀測現象：老虎與狐狸共同前行，百獸看見猛獸靠近，驚慌退避。";
+        document.getElementById('btn-exp-both').className = "bg-emerald-800/80 hover:bg-emerald-700 text-white font-bold py-2 px-1 text-center rounded text-xs transition-all border border-emerald-600 shadow";
+      } 
+      else if (state === 'fox') {
+        // 只有狐狸，老虎隱藏，野兔平靜安詳
+        tiger.style.opacity = '0';
+        tiger.setAttribute('transform', 'translate(-100, 130)'); // 移出畫面
+        fox.setAttribute('transform', 'translate(180, 145)');
+        fox.style.opacity = '1';
+        
+        prey.setAttribute('transform', 'translate(310, 155)');
+        prey.classList.remove('animal-scared');
+        prey.classList.add('animal-calm');
+
+        label.textContent = "當前狀態：控制組 (排除老虎)";
+        desc.textContent = "觀測現象：單獨讓狐狸走過，野兔神態自若地吃草，完全沒有避讓跡象。";
+        document.getElementById('btn-exp-fox').className = "bg-emerald-800/80 hover:bg-emerald-700 text-white font-bold py-2 px-1 text-center rounded text-xs transition-all border border-emerald-600 shadow";
+      } 
+      else if (state === 'tiger') {
+        // 只有老虎，狐狸隱藏，野兔瞬間狂奔出鏡
+        tiger.setAttribute('transform', 'translate(180, 130)');
+        tiger.style.opacity = '1';
+        fox.style.opacity = '0';
+        fox.setAttribute('transform', 'translate(-100, 145)'); // 移出畫面
+        
+        prey.setAttribute('transform', 'translate(430, 155)'); // 狂奔出鏡
+        prey.classList.remove('animal-calm');
+        prey.classList.add('animal-scared');
+
+        label.textContent = "當前狀態：控制組 (排除狐狸)";
+        desc.textContent = "觀測現象：單獨讓老虎走過，百獸尚在數十丈外便已嚇得全速奔逃。";
+        document.getElementById('btn-exp-tiger').className = "bg-emerald-800/80 hover:bg-emerald-700 text-white font-bold py-2 px-1 text-center rounded text-xs transition-all border border-emerald-600 shadow";
+      }
+    }
+
+    // 更新人物歷史對話內容
+    function updateDialogue(stageIndex) {
+      const speechTiger = document.getElementById('speech-tiger');
+      const speechSage = document.getElementById('speech-sage');
+
+      if (stageIndex === 0) {
+        speechTiger.textContent = "「怪哉！吾步於狐后，見百獸皆奪路而逃，無一敢直視其鋒。此狐莫非真受天帝之命，具備無上神格？」";
+        speechSage.textContent = "「大王，您只看見了牠行經時百獸奔逃的『相關性』，卻忘記檢視您自己龐大身軀所帶來的『因果干擾』。」";
+      } else if (stageIndex === 1) {
+        speechTiger.textContent = "「但眼見為實！我親眼所見牠走在前面，野獸就紛紛逃跑。這不能證明牠有神威，那什麼才可以？」";
+        speechSage.textContent = "「大王，單一觀察容易被假象矇蔽。我們必須通過『排除法對照實驗』，才能解開單一變因的真相。」";
+      } else if (stageIndex === 2) {
+        speechTiger.textContent = "「可牠口中的『天帝之命』說得如此不容置疑，我若不信而吃了他，豈不是要遭天譴？」";
+        speechSage.textContent = "「這正是牠巧妙的博弈之處。利用大王你對未知懲罰的極端規避，用零成本的廉價談話實施了戰略欺騙。」";
+      } else if (stageIndex === 3) {
+        speechTiger.textContent = "「既然如此，我該如何才能擺脫這種觀測上的盲區，不被百獸之笑柄所傷？」";
+        speechSage.textContent = "「大王，唯有意識到自己身為『觀察者』也會干擾系統，建立客觀變因排除模型，方得思維之真。」";
+      }
+    }
+
+    // 渲染當前思辨題目
+    function renderStage() {
+      const stage = STAGES[currentStageIndex];
+      isStageDone = false;
+
+      // 更新進度與文字
+      document.getElementById('stage-badge').textContent = `思辨階段：${currentStageIndex + 1} / ${STAGES.length}`;
+      document.getElementById('stage-title').textContent = stage.title;
+      document.getElementById('stage-desc').textContent = stage.description;
+      
+      // 隱藏回饋區
+      const feedback = document.getElementById('feedback-area');
+      feedback.classList.add('hidden');
+
+      // 同步更新觀測器與對話
+      runExperiment(stage.recommendedExp);
+      updateDialogue(currentStageIndex);
+
+      // 動態渲染選項按鈕
+      const optionsBox = document.getElementById('options-box');
+      optionsBox.innerHTML = '';
+
+      stage.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.onclick = () => selectOption(idx);
+        btn.className = "w-full text-left p-4 rounded-xl border border-emerald-950 bg-stone-950/40 hover:bg-emerald-950/10 hover:border-emerald-500/50 transition-all duration-200 flex items-start gap-3 shadow-sm option-button";
+        
+        btn.innerHTML = `
+          <span class="w-6 h-6 rounded-full border border-stone-600 flex items-center justify-center text-xs font-black text-stone-400 bg-stone-900 flex-shrink-0 mt-0.5">
+            ${String.fromCharCode(65 + idx)}
+          </span>
+          <span class="text-sm sm:text-base text-stone-300 font-bold leading-relaxed">${opt.text}</span>
+        `;
+        optionsBox.appendChild(btn);
+      });
+
+      lucide.createIcons();
+    }
+
+    // 處理玩家選項選擇與邏輯判定
+    function selectOption(index) {
+      if (isStageDone) return;
+
+      const stage = STAGES[currentStageIndex];
+      const opt = stage.options[index];
+      const optionButtons = document.querySelectorAll('.option-button');
+
+      // 更新所有選項按鈕的視覺反饋
+      optionButtons.forEach((btn, idx) => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-emerald-950/10', 'hover:border-emerald-500/50');
+
+        if (idx === index) {
+          if (opt.isCorrect) {
+            btn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-950/30 text-emerald-300 flex items-start gap-3 shadow-md option-button";
+          } else {
+            btn.className = "w-full text-left p-4 rounded-xl border-2 border-rose-800 bg-rose-950/20 text-rose-300 flex items-start gap-3 shadow-md option-button";
+          }
+        } else {
+          btn.classList.add('opacity-30');
+        }
+      });
+
+      // 展開判定反饋卡片
+      const feedback = document.getElementById('feedback-area');
+      const iconContainer = document.getElementById('feedback-icon-container');
+      const headline = document.getElementById('feedback-headline');
+      const detail = document.getElementById('feedback-detail');
+      const theoryCard = document.getElementById('theory-card');
+
+      feedback.classList.remove('hidden');
+      detail.textContent = opt.feedback;
+      theoryCard.textContent = stage.theory;
+
+      if (opt.isCorrect) {
+        isStageDone = true;
+        feedback.className = "mt-6 p-5 rounded-xl border border-emerald-500 bg-emerald-950/20 text-emerald-100 fade-in-up flex flex-col sm:flex-row items-start gap-3";
+        iconContainer.innerHTML = `<i data-lucide="check-circle" class="w-6 h-6 text-emerald-400"></i>`;
+        headline.textContent = "思辨正確：突破認知盲點";
+        headline.className = "font-extrabold text-lg text-emerald-400 mb-1";
+        
+        // 更改按鈕文字 (最後一關時顯示「進行最終思維總結」)
+        const nextBtn = document.getElementById('next-stage-btn');
+        const iconEl = nextBtn.querySelector('i, svg');
+        if (currentStageIndex === STAGES.length - 1) {
+          nextBtn.querySelector('span').textContent = "進行最終思維總結";
+          if (iconEl) iconEl.setAttribute('data-lucide', 'award');
+        } else {
+          nextBtn.querySelector('span').textContent = "前進下一思辨階段";
+          if (iconEl) iconEl.setAttribute('data-lucide', 'chevron-right');
+        }
+      } else {
+        feedback.className = "mt-6 p-5 rounded-xl border border-rose-900 bg-rose-950/10 text-rose-200 fade-in-up flex flex-col sm:flex-row items-start gap-3";
+        iconContainer.innerHTML = `<i data-lucide="x-circle" class="w-6 h-6 text-rose-500"></i>`;
+        headline.textContent = "思維偏誤：再次陷入假象";
+        headline.className = "font-extrabold text-lg text-rose-400 mb-1";
+
+        // 提供重新挑戰功能
+        const nextBtn = document.getElementById('next-stage-btn');
+        const iconEl = nextBtn.querySelector('i, svg');
+        nextBtn.querySelector('span').textContent = "重新分析本階段";
+        if (iconEl) iconEl.setAttribute('data-lucide', 'refresh-cw');
+        
+        // 暫時將按鈕功能轉為重新渲染當前階段
+        nextBtn.onclick = function() {
+          renderStage();
+          nextBtn.onclick = goToNextStage; // 還原
+        };
+      }
+
+      lucide.createIcons();
+    }
+
+    // 前往下一幕或進到結束報告
+    function goToNextStage() {
+      if (currentStageIndex < STAGES.length - 1) {
+        currentStageIndex++;
+        renderStage();
+      } else {
+        // 關閉主面板，展現結算
+        document.getElementById('game-container').classList.add('hidden');
+        document.getElementById('ending-panel').classList.remove('hidden');
+        document.getElementById('ending-panel').classList.add('flex');
+        lucide.createIcons();
+      }
+    }
+
+    // 重新開始
+    function restartGame() {
+      currentStageIndex = 0;
+      isStageDone = false;
+      document.getElementById('ending-panel').classList.add('hidden');
+      document.getElementById('ending-panel').classList.remove('flex');
+      document.getElementById('game-container').classList.remove('hidden');
+      renderStage();
+    }
+
+    // 初始載入
+    document.addEventListener('DOMContentLoaded', () => {
+      renderStage();
+    });
+  </script>
+</body>
+</html>
